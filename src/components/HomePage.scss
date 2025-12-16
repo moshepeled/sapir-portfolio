@@ -1,0 +1,140 @@
+.home-page {
+  width: 100%;
+  min-height: calc(100vh - 55px);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #EAEDFF;
+
+  &__container {
+    max-width: 1400px;
+    width: 100%;
+  }
+
+  &__title {
+    font-family: 'Ploni ML v2 AAA', 'Ploni', 'Assistant', 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: #2A3E62;
+    text-align: center;
+    margin-bottom: 50px;
+    direction: rtl;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+  }
+
+  &__card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(42, 62, 98, 0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(68, 100, 157, 0.1) 0%, rgba(42, 62, 98, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(42, 62, 98, 0.25);
+
+      &::before {
+        opacity: 1;
+      }
+
+      .home-page__card-image {
+        transform: scale(1.05);
+      }
+
+      .home-page__card-title {
+        color: #44649D;
+      }
+    }
+
+    &:active {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    background: #F8F8F8;
+    transition: transform 0.3s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      height: 200px;
+    }
+  }
+
+  &__card-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    direction: rtl;
+  }
+
+  &__card-title {
+    font-family: 'Ploni ML v2 AAA', 'Ploni', 'Assistant', 'Heebo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2A3E62;
+    text-align: center;
+    margin: 0;
+    transition: color 0.3s ease;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+}
+

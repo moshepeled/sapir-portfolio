@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Navigation.scss'
 
-const Navigation = ({ pages, currentPage, onPageChange }) => {
+const Navigation = ({ pages, currentPage, onPageChange, onHomeClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -31,6 +31,19 @@ const Navigation = ({ pages, currentPage, onPageChange }) => {
               </button>
             </li>
           ))}
+          {onHomeClick && (
+            <li className="navigation__item navigation__item--home">
+              <button
+                className="navigation__link navigation__link--home"
+                onClick={() => {
+                  onHomeClick()
+                  setIsMenuOpen(false)
+                }}
+              >
+                בית
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

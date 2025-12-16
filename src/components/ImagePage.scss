@@ -28,6 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
   }
 
   &__spinner {
@@ -47,6 +48,7 @@
     color: #8B8282;
     font-size: 16px;
     text-align: center;
+    z-index: 10;
   }
 
   @keyframes spin {

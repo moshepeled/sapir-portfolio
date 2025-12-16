@@ -1,27 +1,45 @@
 import { useState } from 'react'
 import Navigation from './components/Navigation'
+import HomePage from './components/HomePage'
 import ImagePage from './components/ImagePage'
 import './App.scss'
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(null)
 
   const pages = [
-    { id: 1, image: '/images/page1.png', title: 'אחים ליוגה' },
-    { id: 2, image: '/images/page2.png', title: 'מלון תאנה' },
-    { id: 3, image: '/images/page3.png', title: 'קול קורא' },
-    { id: 4, image: '/images/page4.png', title: 'ניהול מלון' },
+    { id: 1, image: '/images/page1.png', thumbnail: '/images/yoga-tumb.png', title: 'אחים ליוגה' },
+    { id: 2, image: '/images/page2.png', thumbnail: '/images/card-tumb.png', title: 'מלון תאנה' },
+    { id: 3, image: '/images/page3.png', thumbnail: '/images/call-tumb.jpg', title: 'קול קורא' },
+    { id: 4, image: '/images/page4.png', thumbnail: '/images/hotel-tumb.png', title: 'ניהול מלון' },
   ]
+
+  const handleSelectPage = (pageId) => {
+    setCurrentPage(pageId)
+  }
+
+  const handlePageChange = (pageId) => {
+    setCurrentPage(pageId)
+  }
+
+  const selectedPage = currentPage ? pages.find(p => p.id === currentPage) : null
 
   return (
     <div className="app">
-      <Navigation
-        pages={pages}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {currentPage && (
+        <Navigation
+          pages={pages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          onHomeClick={() => setCurrentPage(null)}
+        />
+      )}
       <main className="main-content">
-        <ImagePage image={pages[currentPage - 1].image} />
+        {!currentPage ? (
+          <HomePage pages={pages} onSelectPage={handleSelectPage} />
+        ) : (
+          <ImagePage image={selectedPage.image} />
+        )}
       </main>
     </div>
   )
