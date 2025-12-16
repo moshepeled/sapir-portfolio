@@ -7,6 +7,9 @@ const Navigation = ({ pages, currentPage, onPageChange, onHomeClick }) => {
   return (
     <nav className="navigation">
       <div className="navigation__container">
+        <div className="navigation__brand">
+          <span className="navigation__brand-text">Sapir Peled</span>
+        </div>
         <button 
           className={`navigation__toggle ${isMenuOpen ? 'navigation__toggle--open' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -27,6 +30,7 @@ const Navigation = ({ pages, currentPage, onPageChange, onHomeClick }) => {
                   setIsMenuOpen(false)
                 }}
               >
+                {page.icon && <span className="navigation__icon">{page.icon}</span>}
                 {page.title}
               </button>
             </li>
@@ -40,6 +44,7 @@ const Navigation = ({ pages, currentPage, onPageChange, onHomeClick }) => {
                   setIsMenuOpen(false)
                 }}
               >
+                <span className="navigation__icon">🏠</span>
                 בית
               </button>
             </li>

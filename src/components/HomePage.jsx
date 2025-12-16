@@ -4,7 +4,9 @@ const HomePage = ({ pages, onSelectPage }) => {
   return (
     <div className="home-page">
       <div className="home-page__container">
-        <h1 className="home-page__title">בחרו פרויקט</h1>
+        <div className="home-page__header">
+          <p className="home-page__subtitle">Hi, I'm Sapir, A product designer specializing in UX/UI design and web development with a passion for building web applications</p>
+        </div>
         <div className="home-page__grid">
           {pages.map((page) => (
             <div
